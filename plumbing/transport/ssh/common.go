@@ -27,6 +27,13 @@ type sshConfig interface {
 	Get(alias, key string) string
 }
 
+// DefaultSSHClientConfig
+//
+//
+var DefaultSSHClientConfig *ssh.ClientConfig = func() *ssh.ClientConfig {
+	return &ssh.ClientConfig{}
+}()
+
 // NewClient creates a new SSH client with an optional *ssh.ClientConfig.
 func NewClient(config *ssh.ClientConfig) transport.Transport {
 	return common.NewClient(&runner{config: config})
